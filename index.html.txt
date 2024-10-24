@@ -1,0 +1,30 @@
+<header>
+    <h1>Farmers Market</h1>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section id="hero">
+    <h2>Fresh Produce, Direct from Farmers</h2>
+    <p>Support local agriculture and enjoy the freshest ingredients.</p>
+    <a href="#products" class="cta-button">Shop Now</a>
+</section>
+
+<!-- Products Section -->
+<section id="products">
+    <h2>Our Products</h2>
+    <div id="product-list" class="product-list">
+        <!-- Dynamically generated products will appear here -->
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2024 Farmers Market. All rights reserved.</p>
+    <p>Follow us on social media!</p>
+</footer>

@@ -1,0 +1,65 @@
+// Array of product objects with online image URLs
+const products = [
+    {
+        name: "Fresh Fruits",
+        description: "Seasonal fruits sourced directly from local farms.",
+        image: "https://via.placeholder.com/300x200?text=Fresh+Fruits"
+    },
+    {
+        name: "Fresh Vegetables",
+        description: "Organic vegetables harvested daily.",
+        image: "https://via.placeholder.com/300x200?text=Fresh+Vegetables"
+    },
+    {
+        name: "Dairy Products",
+        description: "Fresh milk, cheese, and eggs from local dairies.",
+        image: "https://via.placeholder.com/300x200?text=Dairy+Products"
+    }
+];
+
+// Array to hold items in the cart
+let cart = [];
+
+// Select the product list container
+const productList = document.getElementById('product-list');
+
+// Function to render products
+function renderProducts() {
+    products.forEach(product => {
+        // Create a new div for each product
+        const productItem = document.createElement('div');
+        productItem.className = 'product-item';
+        productItem.innerHTML = `
+            <img src="${product.image}" alt="${product.name}">
+            <h3>${product.name}</h3>
+            <p>${product.description}</p>
+            <button class="add-to-cart" data-name="${product.name}">Add to Cart</button>
+        `;
+        // Append the product item to the product list
+        productList.appendChild(productItem);
+    });
+}
+
+// Function to handle adding items to the cart
+function addToCart(productName) {
+    // Check if the product is already in the cart
+    const existingProduct = cart.find(item => item.name === productName);
+    if (existingProduct) {
+        existingProduct.quantity += 1; // Increase quantity
+    } else {
+        cart.push({ name: productName, quantity: 1 }); // Add new product to cart
+    }
+    console.log(cart); // Display cart in the console (for debugging)
+}
+
+// Event delegation for add to cart buttons
+productList.addEventListener('click', function(event) {
+    if (event.target.classList.contains('add-to-cart')) {
+        const productName = event.target.getAttribute('data-name');
+        addToCart(productName);
+        alert(`${productName} added to cart!`);
+    }
+});
+
+// Call the function to render products when the page loads
+document.addEventListener('DOMContentLoaded', renderProducts);
